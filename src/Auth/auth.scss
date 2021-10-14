@@ -1,0 +1,27 @@
+@import '../assets/Styles/placeholder.scss';
+
+.auth-wrapper{
+    @extend %full-centered;
+    height: 100vh;
+    .auth-inner-wrapper{
+        max-width: 600px;
+        width: 100%;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #ffffff;
+        @media(max-width: 575px){
+            height: 100vh;
+            border-radius: 0;
+        }
+        .logo{
+            width: 120px;
+            margin: 0 auto;
+            img{
+                width: 100%;
+            }
+        }
+        .form-wrapper{
+            margin-top: 50px;
+        }
+    }
+}
