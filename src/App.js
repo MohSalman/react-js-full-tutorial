@@ -25,7 +25,6 @@ function App() {
         <PublicRoute exact path={RouterConstant.ForgotPassword} component={ForgotPassword} />
         <PublicRoute exact path={RouterConstant.ResetPassword} component={ResetPassword} />
         <PrivateRoute path={RouterConstant.Home} component={Layout} />
-        
       </Switch>
     </BrowserRouter>
   );

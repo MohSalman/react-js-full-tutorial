@@ -1,5 +1,19 @@
+@import './theme.scss';
+
 %full-centered {
     display: flex;
     align-items: center;
     justify-content: center;
   }
+
+// 
+
+%heading-one{
+  font-size: 50px;
+  margin-bottom: 0;
+}
+
+// invert page heading
+%invert-page-heading{
+  color: $primary;
+}

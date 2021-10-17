@@ -1,0 +1,52 @@
+@import './../assets/Styles/theme.scss';
+@import './../assets/Styles/placeholder.scss';
+
+.main-wrapper{
+    .sidebar{
+        width: 230px;
+        background-color: $primary;
+        height: 100vh;
+        position: fixed;
+        left: 0;
+        top:0;
+    }
+    .content-outer-wrapper{
+        width: calc(100% - 230px);
+        .header{
+            position: fixed;
+            width: calc(100% - 230px);
+            right: 0;
+            top:0;
+            padding: 10px;
+            background-color: $primary;
+        }
+        .content-wrapper{
+            min-height: calc(100% - 88px);
+            padding: 20px;
+            padding-top: 64px;
+            .page-heading{
+                background-color: $primary;
+                padding: 10px;
+                margin-bottom: 20px;
+                .heading-one{
+                    @extend %heading-one;
+                    color: $secondary;
+                }
+                &.invert-style{
+                    background-color: $secondary;
+                    .heading-one{
+                        @extend %invert-page-heading;
+                    }
+                }
+            }
+            .page-layout{
+                background-color: $primary;
+                padding: 10px;
+            }
+        }
+        .footer{
+            padding: 10px;
+            background-color: $primary;
+        }
+    }
+}
