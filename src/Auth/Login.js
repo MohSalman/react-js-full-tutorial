@@ -13,7 +13,7 @@ const Login = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        axios.post("http://3.142.242.51:9070/admin/api/v1/login",{
+        axios.post("url",{
             "szEmail": email,
             "szPassword": password
           }).then((response)=>{
