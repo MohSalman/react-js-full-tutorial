@@ -21,9 +21,10 @@
             background-color: $primary;
         }
         .content-wrapper{
-            min-height: calc(100% - 88px);
             padding: 20px;
-            padding-top: 64px;
+            margin-top: 64px;
+            height: calc(100vh - 130px);
+            overflow: auto;
             .page-heading{
                 background-color: $primary;
                 padding: 10px;
@@ -45,6 +46,10 @@
             }
         }
         .footer{
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: calc(100% - 230px);
             padding: 10px;
             background-color: $primary;
         }

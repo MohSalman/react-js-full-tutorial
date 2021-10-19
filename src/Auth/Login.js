@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
@@ -12,13 +13,27 @@ const Login = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        if(email === "test@yopmail.com" && password === "Test@123"){
-            console.log("api called successfully")
-            history.push(RouterConstant.Home);
-            localStorage.setItem('testToken', "verified")
-        }else{
-            setMessage("Credential not matched")
-        }
+        axios.post("http://3.142.242.51:9070/admin/api/v1/login",{
+            "szEmail": email,
+            "szPassword": password
+          }).then((response)=>{
+              if(response?.data?.status === 'OK'){
+                  localStorage.setItem('testToken', response?.data?.data?.szToken);
+                  history.push(RouterConstant.Home);
+              }else{
+                  console.log("test login api", response)
+              }
+          })
+          .catch(error=>{
+              console.log("catch block", error)
+          })
+        // if(email === "test@yopmail.com" && password === "Test@123"){
+        //     console.log("api called successfully")
+        //     history.push(RouterConstant.Home);
+        //     localStorage.setItem('testToken', "verified")
+        // }else{
+        //     setMessage("Credential not matched")
+        // }
     }
 
     const handleEmail =(event)=>{
