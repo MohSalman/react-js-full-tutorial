@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { loginApiFun } from '../API/Services/authService';
 import { RouterConstant } from '../constants/RouteConstant';
 import './auth.scss';
 
@@ -13,27 +14,24 @@ const Login = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        axios.post("url",{
+        let data = {
             "szEmail": email,
             "szPassword": password
-          }).then((response)=>{
+          }
+        loginApiFun(data)
+        .then((response)=>{
               if(response?.data?.status === 'OK'){
                   localStorage.setItem('testToken', response?.data?.data?.szToken);
                   history.push(RouterConstant.Home);
+
               }else{
                   console.log("test login api", response)
               }
           })
           .catch(error=>{
-              console.log("catch block", error)
+              console.log("catch block", error.data.message)
+              setMessage(error.data.message);
           })
-        // if(email === "test@yopmail.com" && password === "Test@123"){
-        //     console.log("api called successfully")
-        //     history.push(RouterConstant.Home);
-        //     localStorage.setItem('testToken', "verified")
-        // }else{
-        //     setMessage("Credential not matched")
-        // }
     }
 
     const handleEmail =(event)=>{
@@ -54,7 +52,7 @@ const Login = () => {
                     <img src="https://images.fastcompany.net/image/upload/w_1280,f_auto,q_auto,fl_lossy/w_596,c_limit,q_auto:best,f_auto/fc/3034007-inline-i-applelogo.jpg" alt="logo" />
                 </div>
 
-                <p>{message}</p>
+                <p className="text-danger text-center mt-3">{message}</p>
 
                 <form className="form-wrapper" onSubmit={handleLogin}>
                     <div className="mb-3">

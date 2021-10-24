@@ -1,6 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { getUserList } from '../../API/Services/userService'
 
 const HomePage = () => {
+
+    useEffect(()=>{
+        let data = {
+            iStatus: 3
+        }
+        getUserList(data)
+        .then((res)=>{
+            console.log("res user list--->", res)
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    },[])
+
     return (
         <>
         <div className="page-heading">
