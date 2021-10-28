@@ -14,7 +14,5 @@ export default (() => {
     
     // partner
     getUserList: `${setting.api.url}getUserList`,
-    
-
   }
 })()

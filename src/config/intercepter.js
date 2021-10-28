@@ -13,7 +13,6 @@ ApiInstance.interceptors.request.use(
       "Content-Type": "application/json",
     };
     if (token) {
-      headers.Authorization = setting.api.AUTH;
       headers["x-auth-token"] = token;
     }
     request.headers = headers;
